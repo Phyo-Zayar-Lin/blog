@@ -20,17 +20,20 @@ Route::get('/', function () {
     return view('blogs');
 });
 
-Route::get('/blogs/{blog}',function($filename){
+Route::get('/blogs/{blog}',function($slug){
 
-    $path=__DIR__."/../resources/blogs/$filename.html";
+    $path=__DIR__."/../resources/blogs/$slug.html";
     if(!file_exists($path)){
         abort(404);//return redirect('/');//dd('');
     }
-    $blog=file_get_contents($path);
+    $blog = cache()->remember("posts.$slug",120,function () use($path){
+        var_dump('file_get_contents');
+    return file_get_contents($path);
+    });
     return view('blog',[
         'blog' => $blog
     ]);
-});
+})->where('blog','[A-z\d\-_]+');
 
 
 ?>
