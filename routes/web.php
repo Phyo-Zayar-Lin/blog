@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Models\Blog;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,21 +18,13 @@ use Inertia\Inertia;
 */
 
 Route::get('/', function () {
+
     return view('blogs');
 });
 
 Route::get('/blogs/{blog}',function($slug){
-
-    $path=__DIR__."/../resources/blogs/$slug.html";
-    if(!file_exists($path)){
-        abort(404);//return redirect('/');//dd('');
-    }
-    $blog = cache()->remember("posts.$slug",120,function () use($path){
-        var_dump('file_get_contents');
-    return file_get_contents($path);
-    });
     return view('blog',[
-        'blog' => $blog
+        'blog' => Blog::find($slug)
     ]);
 })->where('blog','[A-z\d\-_]+');
 
