@@ -1,20 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layout')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>blog</title>
+@section('title')
 
-    <link rel="stylesheet" href="/css/app.css">
-    <!-- <script src="/app.js"></script> -->
+<title>
+    {{ $blog->title }}
+</title>
 
-</head>
+@endsection
 
-<body>
-    <h1><?= $blog->title;?></h1>
-    <p><?= $blog->body; ?></p>
-    <a href="/">go back!</a>
-</body>
+@section('content')
 
-</html>
+<h1>{{ $blog->title }}</h1>
+<p>{!! $blog->body !!}</p>
+<a href="/">go back!</a>
+
+@endsection

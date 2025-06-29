@@ -1,25 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layout')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>blog</title>
+@section('title')
+<title>All Blogs</title>
+@endsection
 
-    <link rel="stylesheet" href="/css/app.css">
-    <!-- <script src="/app.js"></script> -->
+@section('content')
 
-</head>
-
-<body>
-    <?php foreach($blogs as $blog):?>
-    <h1><a href="blogs\<?= $blog->slug ?>"><?= $blog->title ?></a></h1>
+@foreach($blogs as $blog)
+<div>
+    <h1>
+        <a href="blogs\{{ $blog->slug }}">
+            {{ $blog->title }}
+        </a>
+    </h1>
     <div>
         <p>
-            <?= $blog->intro ?>
+            published at -{{ $blog->date }}
+        </p>
+        <p>
+            {{ $blog->intro }}
         </p>
     </div>
-    <?php endforeach;?>
-</body>
+</div>
+@endforeach
 
-</html>
+@endsection
