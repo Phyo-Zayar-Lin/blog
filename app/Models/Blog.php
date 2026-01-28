@@ -10,4 +10,9 @@ class Blog extends Model
     use HasFactory;
     protected $guarded=['id'];
     // protected $fillable=['title','intro','body'];
+
+    //hasOne hasMany belongsTo belongsToMany
+    public function category(){
+    return $this->belongsTo(Category::class);
+    }
 }

@@ -5,10 +5,15 @@
     @foreach($blogs as $blog)
     <div>
         <h1>
-            <a href="blogs\{{ $blog->id }}">
+            <a href="blogs\{{ $blog->slug }}">
                 {{ $blog->title }}
             </a>
         </h1>
+        <p>
+            <a href="">
+                {{ $blog->category->name }}
+            </a>
+        </p>
         <div>
             <p>
                 published at -{{ $blog->created_at->diffForHumans() }}
