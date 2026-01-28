@@ -24,9 +24,9 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/blogs/{blog}',function($slug){
+Route::get('/blogs/{blog}',function(Blog $blog){
     return view('blog',[
-        'blog' => Blog::find($slug)
+        'blog' => $blog
     ]);
 })->where('blog','[A-z\d\-_]+');
 
