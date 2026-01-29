@@ -10,7 +10,7 @@
             </a>
         </h1>
         <p>
-            <a href="">
+            <a href="categories\{{ $blog->category->slug }}">
                 {{ $blog->category->name }}
             </a>
         </p>
