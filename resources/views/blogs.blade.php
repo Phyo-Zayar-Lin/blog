@@ -9,6 +9,9 @@
                 {{ $blog->title }}
             </a>
         </h1>
+        <h4>
+            Author - {{$blog->user->name}}
+        </h4>
         <p>
             <a href="categories\{{ $blog->category->slug }}">
                 {{ $blog->category->name }}
